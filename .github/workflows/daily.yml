@@ -2,8 +2,11 @@ name: Daily Commit Workflow
 
 on:
   schedule:
-    - cron: '15 10 * * *'   # Runs once daily at 10:15 UTC
-  workflow_dispatch:        # Allows manual run
+    - cron: '15 10 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   commit-job:
@@ -11,8 +14,7 @@ jobs:
 
     steps:
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Git
         run: |
